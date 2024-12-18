@@ -1,0 +1,14 @@
+﻿services:
+  db:
+    hostname: db
+    image: ankane/pgvector
+    ports:
+      - 6543:5432
+    restart: always
+    environment:
+      - POSTGRES_DB=learn-rag-database
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpwd
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql

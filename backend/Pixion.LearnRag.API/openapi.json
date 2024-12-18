@@ -1,0 +1,1494 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Learn RAG API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/auto-merging/embedding-options": {
+      "get": {
+        "tags": [
+          "Auto-Merging Strategy"
+        ],
+        "operationId": "GetAutoMergingEmbeddingOptions",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AutoMergingEmbeddingOptions"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auto-merging/search": {
+      "get": {
+        "tags": [
+          "Auto-Merging Strategy"
+        ],
+        "operationId": "AutoMergingSearch",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childChunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childChunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childParentPrevalenceFactor",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AutoMergingMetadataSearchResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auto-merging/preview": {
+      "get": {
+        "tags": [
+          "Auto-Merging Strategy"
+        ],
+        "operationId": "AutoMergingPreview",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childChunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childChunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AutoMergingMetadataEmbeddingRecord"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/embedding-options": {
+      "get": {
+        "tags": [
+          "Basic Strategy"
+        ],
+        "operationId": "GetBasicEmbeddingOptions",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicEmbeddingOptions"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/search": {
+      "get": {
+        "tags": [
+          "Basic Strategy"
+        ],
+        "operationId": "BasicSearch",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicMetadataSearchResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/preview": {
+      "get": {
+        "tags": [
+          "Basic Strategy"
+        ],
+        "operationId": "BasicPreview",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicMetadataEmbeddingRecord"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/documents": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "operationId": "GetDocuments",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Document"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hierarchical/embedding-options": {
+      "get": {
+        "tags": [
+          "Hierarchical Strategy"
+        ],
+        "operationId": "GetHierarchicalEmbeddingOptions",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HierarchicalEmbeddingOptions"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hierarchical/search": {
+      "get": {
+        "tags": [
+          "Hierarchical Strategy"
+        ],
+        "operationId": "HierarchicalSearch",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childChunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childChunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childLimit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HierarchicalMetadataSearchResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hierarchical/preview": {
+      "get": {
+        "tags": [
+          "Hierarchical Strategy"
+        ],
+        "operationId": "HierarchicalPreview",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childChunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "childChunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HierarchicalMetadataEmbeddingRecord"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hypothetical-question/embedding-options": {
+      "get": {
+        "tags": [
+          "Hypothetical Question Strategy"
+        ],
+        "operationId": "GetHypotheticalQuestionEmbeddingOptions",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HypotheticalQuestionEmbeddingOptions"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hypothetical-question/search": {
+      "get": {
+        "tags": [
+          "Hypothetical Question Strategy"
+        ],
+        "operationId": "HypotheticalQuestionSearch",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "numberOfQuestions",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HypotheticalQuestionMetadataSearchResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hypothetical-question/preview": {
+      "get": {
+        "tags": [
+          "Hypothetical Question Strategy"
+        ],
+        "operationId": "HypotheticalQuestionPreview",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chunkOverlap",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "numberOfQuestions",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HypotheticalQuestionMetadataEmbeddingRecord"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rag/embedding": {
+      "post": {
+        "tags": [
+          "RAG Endpoints"
+        ],
+        "operationId": "GenerateEmbedding",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateEmbeddingQuery"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleReadOnlyMemory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rag/generate-answer": {
+      "post": {
+        "tags": [
+          "RAG Endpoints"
+        ],
+        "operationId": "GenerateAnswer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateAnswerQuery"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rag/answer-template": {
+      "get": {
+        "tags": [
+          "RAG Endpoints"
+        ],
+        "operationId": "GetAnswerTemplate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerPromptTemplate"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sentence-window/embedding-options": {
+      "get": {
+        "tags": [
+          "Sentence Window Strategy"
+        ],
+        "operationId": "GetSentenceWindowEmbeddingOptions",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SentenceWindowEmbeddingOptions"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sentence-window/search": {
+      "get": {
+        "tags": [
+          "Sentence Window Strategy"
+        ],
+        "operationId": "SentenceWindowSearch",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "range",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SentenceWindowMetadataSearchResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sentence-window/preview": {
+      "get": {
+        "tags": [
+          "Sentence Window Strategy"
+        ],
+        "operationId": "SentenceWindowPreview",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SentenceWindowMetadataEmbeddingRecord"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnswerPromptTemplate": {
+        "type": "object",
+        "properties": {
+          "templateString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "context": {
+            "type": "string",
+            "nullable": true
+          },
+          "question": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AutoMergingEmbeddingOptions": {
+        "type": "object",
+        "properties": {
+          "chunkSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "chunkOverlap": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "childChunkSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "childChunkOverlap": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AutoMergingMetadata": {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "parentIndex": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "embeddingOptions": {
+            "$ref": "#/components/schemas/AutoMergingEmbeddingOptions"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AutoMergingMetadataEmbeddingRecord": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "embedding": {
+            "$ref": "#/components/schemas/SingleReadOnlyMemory"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AutoMergingMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AutoMergingMetadataSearchResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "relevance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AutoMergingMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasicEmbeddingOptions": {
+        "type": "object",
+        "properties": {
+          "chunkSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "chunkOverlap": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasicMetadata": {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "embeddingOptions": {
+            "$ref": "#/components/schemas/BasicEmbeddingOptions"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasicMetadataEmbeddingRecord": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "embedding": {
+            "$ref": "#/components/schemas/SingleReadOnlyMemory"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/BasicMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasicMetadataSearchResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "relevance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/BasicMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Document": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GenerateAnswerQuery": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "nullable": true
+          },
+          "context": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GenerateEmbeddingQuery": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HierarchicalEmbeddingOptions": {
+        "type": "object",
+        "properties": {
+          "chunkSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "chunkOverlap": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "childChunkSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "childChunkOverlap": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HierarchicalMetadata": {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "parentIndex": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          },
+          "embeddingOptions": {
+            "$ref": "#/components/schemas/HierarchicalEmbeddingOptions"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HierarchicalMetadataEmbeddingRecord": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "embedding": {
+            "$ref": "#/components/schemas/SingleReadOnlyMemory"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/HierarchicalMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HierarchicalMetadataSearchResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "relevance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/HierarchicalMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HypotheticalQuestionEmbeddingOptions": {
+        "type": "object",
+        "properties": {
+          "chunkSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "chunkOverlap": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfQuestions": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HypotheticalQuestionMetadata": {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "embeddingOptions": {
+            "$ref": "#/components/schemas/HypotheticalQuestionEmbeddingOptions"
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HypotheticalQuestionMetadataEmbeddingRecord": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "embedding": {
+            "$ref": "#/components/schemas/SingleReadOnlyMemory"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/HypotheticalQuestionMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HypotheticalQuestionMetadataSearchResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "relevance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/HypotheticalQuestionMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SentenceWindowEmbeddingOptions": {
+        "type": "object",
+        "properties": {
+          "chunkSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SentenceWindowMetadata": {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "embeddingOptions": {
+            "$ref": "#/components/schemas/SentenceWindowEmbeddingOptions"
+          },
+          "originalText": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SentenceWindowMetadataEmbeddingRecord": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "embedding": {
+            "$ref": "#/components/schemas/SingleReadOnlyMemory"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/SentenceWindowMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SentenceWindowMetadataSearchResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "relevance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/SentenceWindowMetadata"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SingleReadOnlyMemory": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "format": "float"
+        },
+        "properties": {
+          "length": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "isEmpty": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "span": {
+            "$ref": "#/components/schemas/SingleReadOnlySpan"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SingleReadOnlySpan": {
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "isEmpty": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
