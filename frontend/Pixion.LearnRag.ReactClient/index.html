@@ -11,24 +11,38 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_ID%"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+      const GA_ID_KEY = "%" + "VITE_GA_ID" + "%";
+      const GA_DEBUG = "%VITE_GA_DEBUG%";
+      const GA_ID = "%VITE_GA_ID%";
 
-      const params = {
-        page_path: window.location.pathname,
-        cookie_flags: "SameSite=None;Secure",
-        cookie_domain: "auto",
-      };
-      if ("%VITE_GA_DEBUG%" === "true") {
-        params.debug_mode = true;
-      }
+      if (GA_ID !== GA_ID_KEY) {
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+        document.head.appendChild(script);
 
-      gtag("config", "%VITE_GA_ID%", params);
+        script.onload = () => {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function gtag() {
+            dataLayer.push(arguments);
+          };
+
+          gtag("js", new Date());
+
+          const params = {
+            page_path: window.location.pathname,
+            cookie_flags: "SameSite=None;Secure",
+            cookie_domain: "auto",
+          };
+
+          if (GA_DEBUG === "true") {
+            params.debug_mode = true;
+          }
+
+          gtag("config", GA_ID, params);
+        };
+      }
     </script>
   </head>
   <body>
