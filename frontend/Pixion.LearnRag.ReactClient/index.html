@@ -21,6 +21,8 @@
       gtag("config", "%VITE_GA_ID%", {
         page_path: window.location.pathname,
         debug_mode: "%VITE_GA_DEBUG%" === "true",
+        cookie_flags: "SameSite=None;Secure",
+        cookie_domain: "auto",
       });
     </script>
   </head>
