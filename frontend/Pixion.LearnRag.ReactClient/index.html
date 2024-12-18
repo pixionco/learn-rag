@@ -18,12 +18,17 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "%VITE_GA_ID%", {
+
+      const params = {
         page_path: window.location.pathname,
-        debug_mode: "%VITE_GA_DEBUG%" === "true",
         cookie_flags: "SameSite=None;Secure",
         cookie_domain: "auto",
-      });
+      };
+      if ("%VITE_GA_DEBUG%" === "true") {
+        params.debug_mode = true;
+      }
+
+      gtag("config", "%VITE_GA_ID%", params);
     </script>
   </head>
   <body>
