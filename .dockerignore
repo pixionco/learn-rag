@@ -1,0 +1,11 @@
+.env
+.git
+*.md
+.mono/
+.devcontainer/
+.vscode/
+node_modules/
+obj/s
+bin/
+Dockerfile
+docker-compose.yml
