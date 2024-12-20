@@ -14,7 +14,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <SpaRoot>..\..\frontend\Pixion.LearnRag.ReactClient</SpaRoot>
         <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
-        <SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>
+        <SpaProxyServerUrl>https://localhost:5186</SpaProxyServerUrl>
     </PropertyGroup>
 
     <Target Name="OpenAPI json" AfterTargets="Build">

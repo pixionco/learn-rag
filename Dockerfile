@@ -4,7 +4,7 @@ ARG NODE_VERSION=22
 ## ---------------------------------------------------------------------------------- ##
 ## -------------------------------- base -------------------------------------------- ##
 ## ---------------------------------------------------------------------------------- ##
-FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_BUILDER_IMAGE} as build-base
+FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_BUILDER_IMAGE} AS base
 RUN apt-get update \
   && apt-get upgrade -y \
   && apt-get install -y --no-install-recommends git curl \
@@ -23,7 +23,7 @@ RUN apt-get update \
 ## ---------------------------------------------------------------------------------- ##
 ## --------------------------- base with dependencies ------------------------------- ##
 ## ---------------------------------------------------------------------------------- ##
-FROM build-base as build-base-with-dependencies
+FROM base AS base-with-dependencies
 
 WORKDIR /workspace
 
@@ -41,7 +41,7 @@ RUN npm ci
 ## ---------------------------------------------------------------------------------- ##
 ## ---------------------------------- prod ------------------------------------------ ##
 ## ---------------------------------------------------------------------------------- ##
-FROM build-base-with-dependencies as prod-build
+FROM base-with-dependencies AS prod-start
 
 ARG VITE_GA_ID
 ARG VITE_GA_DEBUG
@@ -55,11 +55,25 @@ ENV VITE_GA_DEBUG=${VITE_GA_DEBUG}
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:${DOTNET_BUILDER_IMAGE} as prod-image
+FROM mcr.microsoft.com/dotnet/aspnet:${DOTNET_BUILDER_IMAGE} AS prod-image
 
 WORKDIR /app
 
-COPY --from=prod-build /workspace/out .
+COPY --from=prod-start /workspace/out .
 
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "Pixion.LearnRag.API.dll"]
+
+## ---------------------------------------------------------------------------------- ##
+## ----------------------------------- dev ------------------------------------------ ##
+## ---------------------------------------------------------------------------------- ##
+FROM base-with-dependencies AS dev-image
+
+WORKDIR /workspace
+
+# Also checked for in vite.config.ts
+RUN dotnet dev-certs https
+
+STOPSIGNAL SIGINT
+EXPOSE 5186 7189 8080
+VOLUME /workspace

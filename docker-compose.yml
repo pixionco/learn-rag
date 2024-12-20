@@ -1,18 +1,45 @@
-version: '3.9'
 services:
-  application:
+  # production
+  app-prod:
     build:
       context: .
-      dockerfile: Dockerfile
-      target: prod-build
-      args:
-        - VITE_GA_ID=${VITE_GA_ID}
-        - VITE_GA_DEBUG=${VITE_GA_DEBUG}
-    image: application:latest
-    hostname: application
-    restart: always
+      target: prod-image
     ports:
       - "8080:8080"
+    environment:
+      VITE_GA_ID: ${VITE_GA_ID}
+      VITE_GA_DEBUG: ${VITE_GA_DEBUG}
+    restart: always
+    depends_on:
+      - db
+
+  # development
+  app-dev:
+    build:
+      context: .
+      target: dev-image
+    ports:
+      - "5186:5186"
+      - "7189:7189"
+      - "8080:8080"
+    volumes:
+      - .:/workspace
+    environment:
+      VITE_GA_ID: ${VITE_GA_ID}
+      VITE_GA_DEBUG: "true"
+    command:
+      [
+        "dotnet",
+        "watch",
+        "--project",
+        "./backend/Pixion.LearnRag.API/Pixion.LearnRag.API.csproj",
+        "run",
+      ]
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+
   db:
     hostname: db
     image: ankane/pgvector
@@ -25,4 +52,4 @@ services:
       - POSTGRES_PASSWORD=testpwd
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./backend/Pixion.LearnRag.Infrastructure/init.sql:/docker-entrypoint-initdb.d/init.sql
