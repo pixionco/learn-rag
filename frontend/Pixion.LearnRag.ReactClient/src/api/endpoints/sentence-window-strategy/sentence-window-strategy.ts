@@ -23,7 +23,7 @@ export const getSentenceWindowEmbeddingOptions = (
   options?: SecondParameter<typeof getSentenceWindowEmbeddingOptionsMutator>
 ) => {
   return getSentenceWindowEmbeddingOptionsMutator<SentenceWindowEmbeddingOptions[]>(
-    { url: `/api/sentence-window/embedding-options`, method: "GET", params },
+    { url: `/learn-rag-api/sentence-window/embedding-options`, method: "GET", params },
     options
   );
 };
@@ -32,7 +32,7 @@ export const sentenceWindowSearch = (
   options?: SecondParameter<typeof sentenceWindowSearchMutator>
 ) => {
   return sentenceWindowSearchMutator<SentenceWindowMetadataSearchResult[]>(
-    { url: `/api/sentence-window/search`, method: "GET", params },
+    { url: `/learn-rag-api/sentence-window/search`, method: "GET", params },
     options
   );
 };
@@ -41,7 +41,7 @@ export const sentenceWindowPreview = (
   options?: SecondParameter<typeof sentenceWindowPreviewMutator>
 ) => {
   return sentenceWindowPreviewMutator<SentenceWindowMetadataEmbeddingRecord[]>(
-    { url: `/api/sentence-window/preview`, method: "GET", params },
+    { url: `/learn-rag-api/sentence-window/preview`, method: "GET", params },
     options
   );
 };

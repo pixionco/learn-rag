@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Pixion.LearnRag.API.Configs;
 using Pixion.LearnRag.API.Extensions;
-using Pixion.LearnRag.API.Infrastructure;
 using Pixion.LearnRag.Core.Entities;
 using Pixion.LearnRag.Core.Entities.Basic;
 using Pixion.LearnRag.UseCases.Basic.Commands;

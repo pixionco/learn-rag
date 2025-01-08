@@ -23,7 +23,7 @@ export const getHierarchicalEmbeddingOptions = (
   options?: SecondParameter<typeof getHierarchicalEmbeddingOptionsMutator>
 ) => {
   return getHierarchicalEmbeddingOptionsMutator<HierarchicalEmbeddingOptions[]>(
-    { url: `/api/hierarchical/embedding-options`, method: "GET", params },
+    { url: `/learn-rag-api/hierarchical/embedding-options`, method: "GET", params },
     options
   );
 };
@@ -32,7 +32,7 @@ export const hierarchicalSearch = (
   options?: SecondParameter<typeof hierarchicalSearchMutator>
 ) => {
   return hierarchicalSearchMutator<HierarchicalMetadataSearchResult[]>(
-    { url: `/api/hierarchical/search`, method: "GET", params },
+    { url: `/learn-rag-api/hierarchical/search`, method: "GET", params },
     options
   );
 };
@@ -41,7 +41,7 @@ export const hierarchicalPreview = (
   options?: SecondParameter<typeof hierarchicalPreviewMutator>
 ) => {
   return hierarchicalPreviewMutator<HierarchicalMetadataEmbeddingRecord[]>(
-    { url: `/api/hierarchical/preview`, method: "GET", params },
+    { url: `/learn-rag-api/hierarchical/preview`, method: "GET", params },
     options
   );
 };

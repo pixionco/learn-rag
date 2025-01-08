@@ -23,7 +23,7 @@ export const getAutoMergingEmbeddingOptions = (
   options?: SecondParameter<typeof getAutoMergingEmbeddingOptionsMutator>
 ) => {
   return getAutoMergingEmbeddingOptionsMutator<AutoMergingEmbeddingOptions[]>(
-    { url: `/api/auto-merging/embedding-options`, method: "GET", params },
+    { url: `/learn-rag-api/auto-merging/embedding-options`, method: "GET", params },
     options
   );
 };
@@ -32,7 +32,7 @@ export const autoMergingSearch = (
   options?: SecondParameter<typeof autoMergingSearchMutator>
 ) => {
   return autoMergingSearchMutator<AutoMergingMetadataSearchResult[]>(
-    { url: `/api/auto-merging/search`, method: "GET", params },
+    { url: `/learn-rag-api/auto-merging/search`, method: "GET", params },
     options
   );
 };
@@ -41,7 +41,7 @@ export const autoMergingPreview = (
   options?: SecondParameter<typeof autoMergingPreviewMutator>
 ) => {
   return autoMergingPreviewMutator<AutoMergingMetadataEmbeddingRecord[]>(
-    { url: `/api/auto-merging/preview`, method: "GET", params },
+    { url: `/learn-rag-api/auto-merging/preview`, method: "GET", params },
     options
   );
 };

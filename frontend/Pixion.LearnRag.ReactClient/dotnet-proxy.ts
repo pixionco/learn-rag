@@ -35,7 +35,9 @@ export function createDotnetProxy() {
 
   return {
     proxy: {
-      "^/api": {
+      // can't be ^/api because it can conflict with other external services
+      // e.g. sentry
+      "^/learn-rag-api": {
         target,
         changeOrigin: true,
         secure: false,

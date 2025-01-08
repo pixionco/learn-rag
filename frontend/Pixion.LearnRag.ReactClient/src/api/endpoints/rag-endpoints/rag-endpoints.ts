@@ -22,7 +22,7 @@ export const generateEmbedding = (
 ) => {
   return generateEmbeddingMutator<SingleReadOnlyMemory>(
     {
-      url: `/api/rag/embedding`,
+      url: `/learn-rag-api/rag/embedding`,
       method: "POST",
       headers: { "Content-Type": "application/json" },
       data: generateEmbeddingQuery,
@@ -36,7 +36,7 @@ export const generateAnswer = (
 ) => {
   return generateAnswerMutator<string>(
     {
-      url: `/api/rag/generate-answer`,
+      url: `/learn-rag-api/rag/generate-answer`,
       method: "POST",
       headers: { "Content-Type": "application/json" },
       data: generateAnswerQuery,
@@ -46,7 +46,7 @@ export const generateAnswer = (
 };
 export const getAnswerTemplate = (options?: SecondParameter<typeof getAnswerTemplateMutator>) => {
   return getAnswerTemplateMutator<AnswerPromptTemplate>(
-    { url: `/api/rag/answer-template`, method: "GET" },
+    { url: `/learn-rag-api/rag/answer-template`, method: "GET" },
     options
   );
 };

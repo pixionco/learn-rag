@@ -1,11 +1,11 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Learn RAG API",
-    "version": "v1"
+    "title": "Pixion.LearnRag.API | v1",
+    "version": "1.0.0"
   },
   "paths": {
-    "/api/auto-merging/embedding-options": {
+    "/learn-rag-api/auto-merging/embedding-options": {
       "get": {
         "tags": [
           "Auto-Merging Strategy"
@@ -39,7 +39,7 @@
         }
       }
     },
-    "/api/auto-merging/search": {
+    "/learn-rag-api/auto-merging/search": {
       "get": {
         "tags": [
           "Auto-Merging Strategy"
@@ -60,7 +60,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -69,7 +69,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -78,7 +78,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -87,7 +87,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -96,7 +96,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -117,7 +117,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/AutoMergingMetadataSearchResult"
+                    "$ref": "#/components/schemas/SearchResultOfAutoMergingMetadata"
                   }
                 }
               }
@@ -126,7 +126,7 @@
         }
       }
     },
-    "/api/auto-merging/preview": {
+    "/learn-rag-api/auto-merging/preview": {
       "get": {
         "tags": [
           "Auto-Merging Strategy"
@@ -148,7 +148,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -157,7 +157,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -166,7 +166,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -175,7 +175,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -196,7 +196,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/AutoMergingMetadataEmbeddingRecord"
+                    "$ref": "#/components/schemas/EmbeddingRecordOfAutoMergingMetadata"
                   }
                 }
               }
@@ -205,7 +205,7 @@
         }
       }
     },
-    "/api/basic/embedding-options": {
+    "/learn-rag-api/basic/embedding-options": {
       "get": {
         "tags": [
           "Basic Strategy"
@@ -239,7 +239,7 @@
         }
       }
     },
-    "/api/basic/search": {
+    "/learn-rag-api/basic/search": {
       "get": {
         "tags": [
           "Basic Strategy"
@@ -260,7 +260,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -269,7 +269,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -278,7 +278,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           }
         ],
@@ -290,7 +290,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/BasicMetadataSearchResult"
+                    "$ref": "#/components/schemas/SearchResultOfBasicMetadata"
                   }
                 }
               }
@@ -299,7 +299,7 @@
         }
       }
     },
-    "/api/basic/preview": {
+    "/learn-rag-api/basic/preview": {
       "get": {
         "tags": [
           "Basic Strategy"
@@ -321,7 +321,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -330,7 +330,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -351,7 +351,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/BasicMetadataEmbeddingRecord"
+                    "$ref": "#/components/schemas/EmbeddingRecordOfBasicMetadata"
                   }
                 }
               }
@@ -360,7 +360,7 @@
         }
       }
     },
-    "/api/documents": {
+    "/learn-rag-api/documents": {
       "get": {
         "tags": [
           "Documents"
@@ -383,7 +383,7 @@
         }
       }
     },
-    "/api/hierarchical/embedding-options": {
+    "/learn-rag-api/hierarchical/embedding-options": {
       "get": {
         "tags": [
           "Hierarchical Strategy"
@@ -417,7 +417,7 @@
         }
       }
     },
-    "/api/hierarchical/search": {
+    "/learn-rag-api/hierarchical/search": {
       "get": {
         "tags": [
           "Hierarchical Strategy"
@@ -438,7 +438,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -447,7 +447,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -456,7 +456,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -465,7 +465,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -474,7 +474,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -483,7 +483,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           }
         ],
@@ -495,7 +495,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/HierarchicalMetadataSearchResult"
+                    "$ref": "#/components/schemas/SearchResultOfHierarchicalMetadata"
                   }
                 }
               }
@@ -504,7 +504,7 @@
         }
       }
     },
-    "/api/hierarchical/preview": {
+    "/learn-rag-api/hierarchical/preview": {
       "get": {
         "tags": [
           "Hierarchical Strategy"
@@ -526,7 +526,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -535,7 +535,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -544,7 +544,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -553,7 +553,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -574,7 +574,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/HierarchicalMetadataEmbeddingRecord"
+                    "$ref": "#/components/schemas/EmbeddingRecordOfHierarchicalMetadata"
                   }
                 }
               }
@@ -583,7 +583,7 @@
         }
       }
     },
-    "/api/hypothetical-question/embedding-options": {
+    "/learn-rag-api/hypothetical-question/embedding-options": {
       "get": {
         "tags": [
           "Hypothetical Question Strategy"
@@ -617,7 +617,7 @@
         }
       }
     },
-    "/api/hypothetical-question/search": {
+    "/learn-rag-api/hypothetical-question/search": {
       "get": {
         "tags": [
           "Hypothetical Question Strategy"
@@ -638,7 +638,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -647,7 +647,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -656,7 +656,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -665,7 +665,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           }
         ],
@@ -677,7 +677,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/HypotheticalQuestionMetadataSearchResult"
+                    "$ref": "#/components/schemas/SearchResultOfHypotheticalQuestionMetadata"
                   }
                 }
               }
@@ -686,7 +686,7 @@
         }
       }
     },
-    "/api/hypothetical-question/preview": {
+    "/learn-rag-api/hypothetical-question/preview": {
       "get": {
         "tags": [
           "Hypothetical Question Strategy"
@@ -708,7 +708,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -717,7 +717,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -726,7 +726,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -747,7 +747,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/HypotheticalQuestionMetadataEmbeddingRecord"
+                    "$ref": "#/components/schemas/EmbeddingRecordOfHypotheticalQuestionMetadata"
                   }
                 }
               }
@@ -756,7 +756,7 @@
         }
       }
     },
-    "/api/rag/embedding": {
+    "/learn-rag-api/rag/embedding": {
       "post": {
         "tags": [
           "RAG Endpoints"
@@ -778,7 +778,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SingleReadOnlyMemory"
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "format": "float"
+                  }
                 }
               }
             }
@@ -786,7 +790,7 @@
         }
       }
     },
-    "/api/rag/generate-answer": {
+    "/learn-rag-api/rag/generate-answer": {
       "post": {
         "tags": [
           "RAG Endpoints"
@@ -816,7 +820,7 @@
         }
       }
     },
-    "/api/rag/answer-template": {
+    "/learn-rag-api/rag/answer-template": {
       "get": {
         "tags": [
           "RAG Endpoints"
@@ -836,7 +840,7 @@
         }
       }
     },
-    "/api/sentence-window/embedding-options": {
+    "/learn-rag-api/sentence-window/embedding-options": {
       "get": {
         "tags": [
           "Sentence Window Strategy"
@@ -870,7 +874,7 @@
         }
       }
     },
-    "/api/sentence-window/search": {
+    "/learn-rag-api/sentence-window/search": {
       "get": {
         "tags": [
           "Sentence Window Strategy"
@@ -891,7 +895,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -900,7 +904,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -909,7 +913,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           }
         ],
@@ -921,7 +925,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SentenceWindowMetadataSearchResult"
+                    "$ref": "#/components/schemas/SearchResultOfSentenceWindowMetadata"
                   }
                 }
               }
@@ -930,7 +934,7 @@
         }
       }
     },
-    "/api/sentence-window/preview": {
+    "/learn-rag-api/sentence-window/preview": {
       "get": {
         "tags": [
           "Sentence Window Strategy"
@@ -952,7 +956,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "uint16"
             }
           },
           {
@@ -973,7 +977,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SentenceWindowMetadataEmbeddingRecord"
+                    "$ref": "#/components/schemas/EmbeddingRecordOfSentenceWindowMetadata"
                   }
                 }
               }
@@ -986,47 +990,52 @@
   "components": {
     "schemas": {
       "AnswerPromptTemplate": {
+        "required": [
+          "context",
+          "question",
+          "templateString"
+        ],
         "type": "object",
         "properties": {
-          "templateString": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
           "context": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "question": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
+          },
+          "templateString": {
+            "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AutoMergingEmbeddingOptions": {
         "type": "object",
         "properties": {
           "chunkSize": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           },
           "chunkOverlap": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           },
           "childChunkSize": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           },
           "childChunkOverlap": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AutoMergingMetadata": {
+        "required": [
+          "documentId",
+          "index",
+          "parentIndex",
+          "embeddingOptions"
+        ],
         "type": "object",
         "properties": {
           "documentId": {
@@ -1046,65 +1055,27 @@
             "$ref": "#/components/schemas/AutoMergingEmbeddingOptions"
           }
         },
-        "additionalProperties": false
-      },
-      "AutoMergingMetadataEmbeddingRecord": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "text": {
-            "type": "string",
-            "nullable": true
-          },
-          "embedding": {
-            "$ref": "#/components/schemas/SingleReadOnlyMemory"
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/AutoMergingMetadata"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AutoMergingMetadataSearchResult": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "text": {
-            "type": "string",
-            "nullable": true
-          },
-          "relevance": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/AutoMergingMetadata"
-          }
-        },
-        "additionalProperties": false
+        "nullable": true
       },
       "BasicEmbeddingOptions": {
         "type": "object",
         "properties": {
           "chunkSize": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           },
           "chunkOverlap": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "BasicMetadata": {
+        "required": [
+          "documentId",
+          "index",
+          "embeddingOptions"
+        ],
         "type": "object",
         "properties": {
           "documentId": {
@@ -1119,51 +1090,14 @@
             "$ref": "#/components/schemas/BasicEmbeddingOptions"
           }
         },
-        "additionalProperties": false
-      },
-      "BasicMetadataEmbeddingRecord": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "text": {
-            "type": "string",
-            "nullable": true
-          },
-          "embedding": {
-            "$ref": "#/components/schemas/SingleReadOnlyMemory"
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/BasicMetadata"
-          }
-        },
-        "additionalProperties": false
-      },
-      "BasicMetadataSearchResult": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "text": {
-            "type": "string",
-            "nullable": true
-          },
-          "relevance": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/BasicMetadata"
-          }
-        },
-        "additionalProperties": false
+        "nullable": true
       },
       "Document": {
+        "required": [
+          "id",
+          "name",
+          "text"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1171,63 +1105,178 @@
             "format": "uuid"
           },
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "text": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
+      },
+      "EmbeddingRecordOfAutoMergingMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "embedding": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AutoMergingMetadata"
+          }
+        }
+      },
+      "EmbeddingRecordOfBasicMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "embedding": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/BasicMetadata"
+          }
+        }
+      },
+      "EmbeddingRecordOfHierarchicalMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "embedding": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/HierarchicalMetadata"
+          }
+        }
+      },
+      "EmbeddingRecordOfHypotheticalQuestionMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "embedding": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/HypotheticalQuestionMetadata"
+          }
+        }
+      },
+      "EmbeddingRecordOfSentenceWindowMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "embedding": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/SentenceWindowMetadata"
+          }
+        }
       },
       "GenerateAnswerQuery": {
+        "required": [
+          "question",
+          "context"
+        ],
         "type": "object",
         "properties": {
           "question": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "context": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "GenerateEmbeddingQuery": {
+        "required": [
+          "text"
+        ],
         "type": "object",
         "properties": {
           "text": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "HierarchicalEmbeddingOptions": {
         "type": "object",
         "properties": {
           "chunkSize": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           },
           "chunkOverlap": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           },
           "childChunkSize": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           },
           "childChunkOverlap": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "HierarchicalMetadata": {
+        "required": [
+          "documentId",
+          "index",
+          "parentIndex",
+          "summary",
+          "embeddingOptions"
+        ],
         "type": "object",
         "properties": {
           "documentId": {
@@ -1251,69 +1300,32 @@
             "$ref": "#/components/schemas/HierarchicalEmbeddingOptions"
           }
         },
-        "additionalProperties": false
-      },
-      "HierarchicalMetadataEmbeddingRecord": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "text": {
-            "type": "string",
-            "nullable": true
-          },
-          "embedding": {
-            "$ref": "#/components/schemas/SingleReadOnlyMemory"
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/HierarchicalMetadata"
-          }
-        },
-        "additionalProperties": false
-      },
-      "HierarchicalMetadataSearchResult": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "text": {
-            "type": "string",
-            "nullable": true
-          },
-          "relevance": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/HierarchicalMetadata"
-          }
-        },
-        "additionalProperties": false
+        "nullable": true
       },
       "HypotheticalQuestionEmbeddingOptions": {
         "type": "object",
         "properties": {
           "chunkSize": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           },
           "chunkOverlap": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           },
           "numberOfQuestions": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "HypotheticalQuestionMetadata": {
+        "required": [
+          "documentId",
+          "index",
+          "embeddingOptions",
+          "questions"
+        ],
         "type": "object",
         "properties": {
           "documentId": {
@@ -1331,13 +1343,17 @@
             "type": "array",
             "items": {
               "type": "string"
-            },
-            "nullable": true
+            }
           }
         },
-        "additionalProperties": false
+        "nullable": true
       },
-      "HypotheticalQuestionMetadataEmbeddingRecord": {
+      "SearchResultOfAutoMergingMetadata": {
+        "required": [
+          "id",
+          "text",
+          "relevance"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1345,19 +1361,24 @@
             "format": "uuid"
           },
           "text": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
-          "embedding": {
-            "$ref": "#/components/schemas/SingleReadOnlyMemory"
+          "relevance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
           "metadata": {
-            "$ref": "#/components/schemas/HypotheticalQuestionMetadata"
+            "$ref": "#/components/schemas/AutoMergingMetadata"
           }
-        },
-        "additionalProperties": false
+        }
       },
-      "HypotheticalQuestionMetadataSearchResult": {
+      "SearchResultOfBasicMetadata": {
+        "required": [
+          "id",
+          "text",
+          "relevance"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1365,8 +1386,57 @@
             "format": "uuid"
           },
           "text": {
-            "type": "string",
+            "type": "string"
+          },
+          "relevance": {
+            "type": "number",
+            "format": "double",
             "nullable": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/BasicMetadata"
+          }
+        }
+      },
+      "SearchResultOfHierarchicalMetadata": {
+        "required": [
+          "id",
+          "text",
+          "relevance"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "relevance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/HierarchicalMetadata"
+          }
+        }
+      },
+      "SearchResultOfHypotheticalQuestionMetadata": {
+        "required": [
+          "id",
+          "text",
+          "relevance"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
           },
           "relevance": {
             "type": "number",
@@ -1376,20 +1446,49 @@
           "metadata": {
             "$ref": "#/components/schemas/HypotheticalQuestionMetadata"
           }
-        },
-        "additionalProperties": false
+        }
+      },
+      "SearchResultOfSentenceWindowMetadata": {
+        "required": [
+          "id",
+          "text",
+          "relevance"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "relevance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/SentenceWindowMetadata"
+          }
+        }
       },
       "SentenceWindowEmbeddingOptions": {
         "type": "object",
         "properties": {
           "chunkSize": {
             "type": "integer",
-            "format": "int32"
+            "format": "uint16"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SentenceWindowMetadata": {
+        "required": [
+          "documentId",
+          "index",
+          "embeddingOptions",
+          "originalText"
+        ],
         "type": "object",
         "properties": {
           "documentId": {
@@ -1404,91 +1503,34 @@
             "$ref": "#/components/schemas/SentenceWindowEmbeddingOptions"
           },
           "originalText": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
-        "additionalProperties": false
-      },
-      "SentenceWindowMetadataEmbeddingRecord": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "text": {
-            "type": "string",
-            "nullable": true
-          },
-          "embedding": {
-            "$ref": "#/components/schemas/SingleReadOnlyMemory"
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/SentenceWindowMetadata"
-          }
-        },
-        "additionalProperties": false
-      },
-      "SentenceWindowMetadataSearchResult": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "text": {
-            "type": "string",
-            "nullable": true
-          },
-          "relevance": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/SentenceWindowMetadata"
-          }
-        },
-        "additionalProperties": false
-      },
-      "SingleReadOnlyMemory": {
-        "type": "array",
-        "items": {
-          "type": "number",
-          "format": "float"
-        },
-        "properties": {
-          "length": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "isEmpty": {
-            "type": "boolean",
-            "readOnly": true
-          },
-          "span": {
-            "$ref": "#/components/schemas/SingleReadOnlySpan"
-          }
-        },
-        "additionalProperties": false
-      },
-      "SingleReadOnlySpan": {
-        "type": "object",
-        "properties": {
-          "length": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "isEmpty": {
-            "type": "boolean",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
+        "nullable": true
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Auto-Merging Strategy"
+    },
+    {
+      "name": "Basic Strategy"
+    },
+    {
+      "name": "Documents"
+    },
+    {
+      "name": "Hierarchical Strategy"
+    },
+    {
+      "name": "Hypothetical Question Strategy"
+    },
+    {
+      "name": "RAG Endpoints"
+    },
+    {
+      "name": "Sentence Window Strategy"
+    }
+  ]
 }

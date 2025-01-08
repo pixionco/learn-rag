@@ -1,6 +1,6 @@
 ﻿using Pixion.LearnRag.API.Configs;
 
-namespace Pixion.LearnRag.API.Infrastructure;
+namespace Pixion.LearnRag.API.Endpoints;
 
 public abstract class EndpointGroupBase
 {

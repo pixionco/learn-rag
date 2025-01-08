@@ -14,7 +14,12 @@ x64/
 
 # Appsettings
 appsettings*.json
-!appsettings*Example*.json
+!appsettings*Local*.json
+!appsettings.Example.json
+
+# Serilog - separated from appsettings
+serilog*.json
+!serilog.json
 
 # Logs
 log*.txt

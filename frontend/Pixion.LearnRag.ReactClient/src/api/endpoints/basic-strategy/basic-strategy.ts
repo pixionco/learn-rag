@@ -23,7 +23,7 @@ export const getBasicEmbeddingOptions = (
   options?: SecondParameter<typeof getBasicEmbeddingOptionsMutator>
 ) => {
   return getBasicEmbeddingOptionsMutator<BasicEmbeddingOptions[]>(
-    { url: `/api/basic/embedding-options`, method: "GET", params },
+    { url: `/learn-rag-api/basic/embedding-options`, method: "GET", params },
     options
   );
 };
@@ -32,7 +32,7 @@ export const basicSearch = (
   options?: SecondParameter<typeof basicSearchMutator>
 ) => {
   return basicSearchMutator<BasicMetadataSearchResult[]>(
-    { url: `/api/basic/search`, method: "GET", params },
+    { url: `/learn-rag-api/basic/search`, method: "GET", params },
     options
   );
 };
@@ -41,7 +41,7 @@ export const basicPreview = (
   options?: SecondParameter<typeof basicPreviewMutator>
 ) => {
   return basicPreviewMutator<BasicMetadataEmbeddingRecord[]>(
-    { url: `/api/basic/preview`, method: "GET", params },
+    { url: `/learn-rag-api/basic/preview`, method: "GET", params },
     options
   );
 };

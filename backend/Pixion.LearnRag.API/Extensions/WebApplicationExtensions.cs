@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Options;
 using Pixion.LearnRag.API.Configs;
-using Pixion.LearnRag.API.Infrastructure;
+using Pixion.LearnRag.API.Endpoints;
 
 namespace Pixion.LearnRag.API.Extensions;
 
@@ -10,7 +10,7 @@ public static class WebApplicationExtensions
     public static RouteGroupBuilder MapGroup(this WebApplication app, string path, string tag)
     {
         return app
-            .MapGroup($"/api/{path}")
+            .MapGroup($"/learn-rag-api/{path}")
             .WithTags(tag)
             .WithOpenApi();
     }

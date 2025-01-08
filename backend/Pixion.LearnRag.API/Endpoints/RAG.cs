@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Pixion.LearnRag.API.Configs;
 using Pixion.LearnRag.API.Extensions;
-using Pixion.LearnRag.API.Infrastructure;
 using Pixion.LearnRag.Core.Entities.PromptTemplates;
 using Pixion.LearnRag.UseCases.RAG.Queries;
 

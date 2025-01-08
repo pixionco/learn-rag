@@ -2,17 +2,35 @@ using Pixion.LearnRag.API;
 using Pixion.LearnRag.API.Infrastructure;
 using Serilog;
 
-if (SwaggerGen.EntryPointForSwaggerGenerationApplication(args))
-    return;
+Log.Logger = SerilogHelper
+    .BuildSerilogLoggerConfiguration()
+    .CreateLogger();
 
-var builder = WebApplication.CreateBuilder(args);
+try
+{
+    // post-build OpenAPI specification generation
+    if (OpenApiStartup.OpenApiGenerationApplication(args)) return;
 
-builder.Host.UseSerilog((_, config) => config.ReadFrom.Configuration(builder.Configuration));
-builder.Services
-    .AddConfiguration(builder.Configuration)
-    .ConfigureServices(builder.Configuration);
+    Log.Information("Starting web host");
+    BuildAndRun(args);
+    Log.Information("Host stopped");
+}
+catch (Exception exception)
+{
+    Log.Fatal(exception, "Host terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
 
-var app = builder.Build();
+static void BuildAndRun(string[] args)
+{
+    var builder = WebApplication.CreateBuilder(args);
+    builder.AddConfiguration();
+    builder.ConfigureServices();
 
-app.ConfigurePipeline();
-app.Run();
+    var app = builder.Build();
+    app.ConfigurePipeline();
+    app.Run();
+}

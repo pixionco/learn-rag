@@ -1,0 +1,18 @@
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console" ],
+    "MinimumLevel": {
+      "Default": "Debug",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning",
+        "Serilog.AspNetAccounts.RequestLoggingMiddleware": "Information",
+        "Microsoft.EntityFrameworkAccounts.Model.Validation": "Error",
+        "Microsoft.EntityFrameworkAccounts.Database": "Fatal"
+      }
+    },
+    "WriteTo": {
+      "Console": "Console"
+    }
+  }
+}

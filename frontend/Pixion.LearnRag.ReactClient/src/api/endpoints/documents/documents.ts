@@ -10,6 +10,9 @@ import getDocumentsMutator from "../../axios";
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
 
 export const getDocuments = (options?: SecondParameter<typeof getDocumentsMutator>) => {
-  return getDocumentsMutator<Document[]>({ url: `/api/documents`, method: "GET" }, options);
+  return getDocumentsMutator<Document[]>(
+    { url: `/learn-rag-api/documents`, method: "GET" },
+    options
+  );
 };
 export type GetDocumentsResult = NonNullable<Awaited<ReturnType<typeof getDocuments>>>;

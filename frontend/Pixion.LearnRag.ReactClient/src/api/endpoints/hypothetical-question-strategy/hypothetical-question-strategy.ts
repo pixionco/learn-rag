@@ -23,7 +23,7 @@ export const getHypotheticalQuestionEmbeddingOptions = (
   options?: SecondParameter<typeof getHypotheticalQuestionEmbeddingOptionsMutator>
 ) => {
   return getHypotheticalQuestionEmbeddingOptionsMutator<HypotheticalQuestionEmbeddingOptions[]>(
-    { url: `/api/hypothetical-question/embedding-options`, method: "GET", params },
+    { url: `/learn-rag-api/hypothetical-question/embedding-options`, method: "GET", params },
     options
   );
 };
@@ -32,7 +32,7 @@ export const hypotheticalQuestionSearch = (
   options?: SecondParameter<typeof hypotheticalQuestionSearchMutator>
 ) => {
   return hypotheticalQuestionSearchMutator<HypotheticalQuestionMetadataSearchResult[]>(
-    { url: `/api/hypothetical-question/search`, method: "GET", params },
+    { url: `/learn-rag-api/hypothetical-question/search`, method: "GET", params },
     options
   );
 };
@@ -41,7 +41,7 @@ export const hypotheticalQuestionPreview = (
   options?: SecondParameter<typeof hypotheticalQuestionPreviewMutator>
 ) => {
   return hypotheticalQuestionPreviewMutator<HypotheticalQuestionMetadataEmbeddingRecord[]>(
-    { url: `/api/hypothetical-question/preview`, method: "GET", params },
+    { url: `/learn-rag-api/hypothetical-question/preview`, method: "GET", params },
     options
   );
 };

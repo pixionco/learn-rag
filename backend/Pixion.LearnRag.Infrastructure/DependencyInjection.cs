@@ -54,22 +54,21 @@ public static class DependencyInjection
             services.AddSingleton<ISummaryGenerationService, SummaryGenerationService>();
             services.AddSingleton<IQuestionGenerationService, QuestionGenerationService>();
             services.AddSingleton<IAnswerGenerationService, AnswerGenerationService>();
+
+            // Semantic Kernel 
+            using var servicesProvider = services.BuildServiceProvider();
+            var azureOpenAiChatConfig = servicesProvider.GetService<IOptions<AzureOpenAiChatConfig>>()
+                ?.Value;
+            ArgumentNullException.ThrowIfNull(azureOpenAiChatConfig);
+            services
+                .AddKernel()
+                .AddAzureOpenAIChatCompletion(
+                    azureOpenAiChatConfig.DeploymentName,
+                    azureOpenAiChatConfig.Endpoint,
+                    azureOpenAiChatConfig.ApiKey
+                );
         }
-
         services.AddSingleton<IChunkingService, ChunkingService>();
-
-        // Semantic Kernel 
-        using var servicesProvider = services.BuildServiceProvider();
-        var azureOpenAiChatConfig = servicesProvider.GetService<IOptions<AzureOpenAiChatConfig>>()
-            ?.Value;
-        ArgumentNullException.ThrowIfNull(azureOpenAiChatConfig);
-        services
-            .AddKernel()
-            .AddAzureOpenAIChatCompletion(
-                azureOpenAiChatConfig.DeploymentName,
-                azureOpenAiChatConfig.Endpoint,
-                azureOpenAiChatConfig.ApiKey
-            );
 
         // Postgres Seeders
         // NOTE: order of seeders matters

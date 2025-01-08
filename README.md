@@ -8,14 +8,63 @@ The project is divided into two main parts: the backend and the frontend:
 - The frontend is implemented inside a single project called `ReactClient`, showcasing the data flow in an interactive, graph-like sandbox.
 - The backend follows clean architecture principles and is split into four projects: `Core`, `Application`, `Infrastructure`, and `API`.
 
-Instructions for running the project can be found in the backend’s `API Project`.
+## Running the Project
+
+Before running project in any of the configurations, it's necessary to make sure the environment variables are properly setup.
+
+Frontend variables can be loaded by creating an `.env` file in the `/frontend/Pixion.LearnRag.ReactClient` directory.
+All **frontend environment variables are optional**, and are not required for the project's functionality.
+More on the frontend variables can be read in `ReactClient` project's README file.
+
+Backend variables can be loaded by creating an `appsettings.json` files in the `/backend/Pixion.LearnRag.API` directory.
+**Backend environment variables are required** for the project to function properly.
+More on the backend variables can be read in `API` project's README file.
+
+### Database
+
+While the project can be run without the database, the application will be unusable as no data can be fetched.
+Before runing the application make sure that the either local or external databases are running and that the right environment variables are set.
+
+The local database can be started manually by running the following command from the root of the project:
+
+```bash
+docker-compose -f .\backend\Pixion.LearnRag.Infrastructure\docker-compose.yml up -d
+```
+
+The container wont be automatucally stopped when the applications stops. This needs to be done manually by running the following command from the root of the project:
+
+```bash
+docker-compose -f .\backend\Pixion.LearnRag.Infrastructure\docker-compose.yml stop
+```
+
+### Release/Production
+
+If you simply want to run the project without any modification, the easiest way is to run the release version of the application through the `docker-compose.yml`.
+
+You can achieve that by running the following command from the root of the project:
+
+```bash
+docker-compose up
+```
+
+**Note**: You need to create the `appsettings.json` file in the `API` project for the image to work properly.
+
+### Debug/Development
+
+If you want to run the project in development mode, the easiest way is to use one of the launch profiles defined in the `API` project.
+
+To start the application in `Local` environment (local database running in docker), you can run the following command from the root of the project:
+
+```bash
+dotnet run --project "./backend/Pixion.LearnRag.API/" --launch-profile "https-local"
+```
+
+More details can be found in the `API` project's README file.
+
+## Extra
 
 Below is an overview of the implemented strategies with brief descriptions.
-Additional tables for embedding options and retrieval options can be found in the [Extra](#extra) section, which may help with project navigation.
-
-## Strategies
-
-Several RAG strategies are implemented in the project:
+Additional tables for embedding options and retrieval options can be found in the [Strategy Table](###strategy-table) section, which may help with project navigation.
 
 ### Basic [#](https://pixion.co/blog/basic-index-retrieval)
 
@@ -56,9 +105,9 @@ During retrieval, the user's query is compared to these hypothetical question em
 This approach improves semantic alignment between user queries and document chunks,
 with metadata linking the questions back to their respective chunks for accurate context retrieval.
 
-## Extra
+### Strategy Table
 
-Here is a table that shows embedding options properties per strategy:
+Table that shows embedding options properties per strategy:
 
 |                     | basic | sentence window | auto merging | hierarchical | hypothetical question |
 | ------------------- | :---: | :-------------: | :----------: | :----------: | :-------------------: |
@@ -68,7 +117,7 @@ Here is a table that shows embedding options properties per strategy:
 | child chunk overlap |       |                 |      ✔       |      ✔       |                       |
 | number of questions |       |                 |              |              |           ✔           |
 
-Here is a table that shows retrieval options properties per strategy:
+Table that shows retrieval options properties per strategy:
 
 |                                | basic | sentence window | auto merging | hierarchical | hypothetical question |
 | ------------------------------ | :---: | :-------------: | :----------: | :----------: | :-------------------: |

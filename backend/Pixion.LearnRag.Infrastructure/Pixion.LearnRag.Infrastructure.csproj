@@ -8,16 +8,15 @@
 
 
     <ItemGroup>
-        <PackageReference Include="Ardalis.SharedKernel" Version="1.6.0"/>
-        <PackageReference Include="Microsoft.DeepDev.TokenizerLib" Version="1.3.3"/>
-        <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0"/>
-        <PackageReference Include="Microsoft.SemanticKernel" Version="1.30.0"/>
-        <PackageReference Include="Npgsql" Version="9.0.1"/>
-        <PackageReference Include="Pgvector" Version="0.3.0"/>
+        <PackageReference Include="Microsoft.DeepDev.TokenizerLib" Version="1.3.3" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
+        <PackageReference Include="Microsoft.SemanticKernel" Version="1.32.0" />
+        <PackageReference Include="Npgsql" Version="9.0.2" />
+        <PackageReference Include="Pgvector" Version="0.3.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Pixion.LearnRag.Application\Pixion.LearnRag.Application.csproj"/>
+        <ProjectReference Include="..\Pixion.LearnRag.Application\Pixion.LearnRag.Application.csproj" />
     </ItemGroup>
 
 </Project>

@@ -13,6 +13,10 @@ on:
 env:
   VITE_GA_ID: ${{ vars.VITE_GA_ID }}
   VITE_GA_DEBUG: ${{ vars.VITE_GA_DEBUG }}
+  VITE_SENTRY_DSN: ${{ vars.VITE_SENTRY_DSN }}
+  SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+  SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
 jobs:
   build:

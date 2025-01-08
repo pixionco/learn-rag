@@ -1,79 +1,84 @@
-﻿using Microsoft.OpenApi.Models;
-using Pixion.LearnRag.API.Configs;
+﻿using Pixion.LearnRag.API.Configs;
 using Pixion.LearnRag.API.Extensions;
 using Pixion.LearnRag.API.Infrastructure;
-using Pixion.LearnRag.API.Infrastructure.SwashbuckleFilters;
 using Pixion.LearnRag.Infrastructure;
 using Pixion.LearnRag.Infrastructure.Configs;
 using Pixion.LearnRag.Infrastructure.Extensions;
 using Pixion.LearnRag.UseCases;
+using Scalar.AspNetCore;
+using Serilog;
+using System.Text.Json;
 
 namespace Pixion.LearnRag.API;
 
 public static class Startup
 {
-    public static IServiceCollection AddConfiguration(this IServiceCollection services, IConfiguration configuration)
+    public static WebApplicationBuilder AddConfiguration(this WebApplicationBuilder builder)
     {
-        var azureOpenAiChatConfig = configuration.GetSection(AzureOpenAiChatConfig.Key);
-        var azureOpenAiEmbeddingConfig = configuration.GetSection(AzureOpenAiEmbeddingConfig.Key);
-        var vectorDatabaseConfig = configuration.GetSection(VectorDatabaseConfig.Key);
-        var documentDatabaseConfig = configuration.GetSection(DocumentDatabaseConfig.Key);
-        var mockConfig = configuration.GetSection(MockConfig.Key);
-        var seedConfig = configuration.GetSection(SeedConfig.Key);
-        var endpointsConfig = configuration.GetSection(EndpointsConfig.Key);
-        services
-            .AddFluentValidatedOptions<AzureOpenAiChatConfig, AzureOpenAiChatConfigValidator>(azureOpenAiChatConfig)
-            .AddFluentValidatedOptions<AzureOpenAiEmbeddingConfig, AzureOpenAiEmbeddingConfigValidator>(
-                azureOpenAiEmbeddingConfig
-            )
-            .AddFluentValidatedOptions<VectorDatabaseConfig, VectorDatabaseConfigValidator>(vectorDatabaseConfig)
-            .AddFluentValidatedOptions<DocumentDatabaseConfig, DocumentDatabaseConfigValidator>(documentDatabaseConfig)
-            .AddFluentValidatedOptions<MockConfig, MockConfigValidator>(mockConfig)
-            .AddFluentValidatedOptions<SeedConfig, SeedConfigValidator>(seedConfig)
-            .AddFluentValidatedOptions<EndpointsConfig, EndpointsConfigValidator>(endpointsConfig);
+        var azureOpenAiChatSection = builder.Configuration.GetSection(AzureOpenAiChatConfig.Key);
+        var azureOpenAiEmbeddingSection = builder.Configuration.GetSection(AzureOpenAiEmbeddingConfig.Key);
+        var vectorDatabaseSection = builder.Configuration.GetSection(VectorDatabaseConfig.Key);
+        var documentDatabaseSection = builder.Configuration.GetSection(DocumentDatabaseConfig.Key);
+        var mockSection = builder.Configuration.GetSection(MockConfig.Key);
+        var seedSection = builder.Configuration.GetSection(SeedConfig.Key);
+        var endpointsSection = builder.Configuration.GetSection(EndpointsConfig.Key);
 
-        return services;
-    }
-
-    public static IServiceCollection ConfigureSwagger(this IServiceCollection services)
-    {
-        services
-            .AddEndpointsApiExplorer()
-            .AddSwaggerGen(
-                o =>
-                {
-                    o.SwaggerDoc("v1", new OpenApiInfo { Title = "Learn RAG API", Version = "v1" });
-                    o.OperationFilter<CamelCaseParameterFilter>();
-                    // o.DescribeAllParametersInCamelCase();
-                    o.SchemaFilter<ReadOnlyMemoryFloatSchemaFilter>();
-                }
+        // if we're mocking AI models no need for AI model configuration
+        var mockConfig = mockSection.Get<MockConfig>()!;
+        if (!mockConfig.MockAiModels)
+        {
+            builder.Services
+                .AddFluentValidatedOptions<AzureOpenAiChatConfig, AzureOpenAiChatConfigValidator>(azureOpenAiChatSection)
+                .AddFluentValidatedOptions<AzureOpenAiEmbeddingConfig, AzureOpenAiEmbeddingConfigValidator>(
+                azureOpenAiEmbeddingSection
             );
-        return services;
+        }
+
+        builder.Services
+            .AddFluentValidatedOptions<VectorDatabaseConfig, VectorDatabaseConfigValidator>(vectorDatabaseSection)
+            .AddFluentValidatedOptions<DocumentDatabaseConfig, DocumentDatabaseConfigValidator>(documentDatabaseSection)
+            .AddFluentValidatedOptions<MockConfig, MockConfigValidator>(mockSection)
+            .AddFluentValidatedOptions<SeedConfig, SeedConfigValidator>(seedSection)
+            .AddFluentValidatedOptions<EndpointsConfig, EndpointsConfigValidator>(endpointsSection);
+
+        return builder;
     }
 
-    public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
+    public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
     {
-        // Swagger
-        services.ConfigureSwagger();
+        // Serilog
+        builder.Services.AddSerilog();
+
+        // OpenAPI
+        builder.Services.AddOpenApi(o =>
+        {
+            o.AddOperationTransformer((operation, context, cancellationToken) =>
+            {
+                if (operation.Parameters != null)
+                    foreach (var parameter in operation.Parameters)
+                        parameter.Name = JsonNamingPolicy.CamelCase.ConvertName(parameter.Name);
+                return Task.CompletedTask;
+            });
+        });
 
         // Services
-        services
+        builder.Services
             .AddUseCasesServices()
             .AddInfrastructureServices(
-                configuration.GetSection(MockConfig.Key).Get<MockConfig>()!,
-                configuration.GetSection(SeedConfig.Key).Get<SeedConfig>()!
+                builder.Configuration.GetSection(MockConfig.Key).Get<MockConfig>()!,
+                builder.Configuration.GetSection(SeedConfig.Key).Get<SeedConfig>()!
             );
 
         // Global exception handler
-        services.AddExceptionHandler<GlobalExceptionHandler>();
-        services.AddProblemDetails();
+        builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+        builder.Services.AddProblemDetails();
 
         // Seeding
-        services
+        builder.Services
             .SeedDatabase()
             .Wait();
 
-        return services;
+        return builder;
     }
 
     public static WebApplication ConfigurePipeline(this WebApplication app)
@@ -88,12 +93,13 @@ public static class Startup
         app.MapEndpoints();
         if (!app.Environment.IsProduction())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.MapOpenApi();
+            app.MapScalarApiReference();
         }
 
         app.UseExceptionHandler();
 
+        // fallback to client
         app.UseDefaultFiles();
         app.UseStaticFiles();
         app.MapFallbackToFile("/index.html");

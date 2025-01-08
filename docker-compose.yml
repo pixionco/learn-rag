@@ -1,55 +1,10 @@
 services:
-  # production
   app-prod:
     build:
       context: .
       target: prod-image
     ports:
       - "8080:8080"
-    environment:
-      VITE_GA_ID: ${VITE_GA_ID}
-      VITE_GA_DEBUG: ${VITE_GA_DEBUG}
+    env_file:
+      - ./frontend/Pixion.LearnRag.ReactClient/.env
     restart: always
-    depends_on:
-      - db
-
-  # development
-  app-dev:
-    build:
-      context: .
-      target: dev-image
-    ports:
-      - "5186:5186"
-      - "7189:7189"
-      - "8080:8080"
-    volumes:
-      - .:/workspace
-    environment:
-      VITE_GA_ID: ${VITE_GA_ID}
-      VITE_GA_DEBUG: "true"
-    command:
-      [
-        "dotnet",
-        "watch",
-        "--project",
-        "./backend/Pixion.LearnRag.API/Pixion.LearnRag.API.csproj",
-        "run",
-      ]
-    stdin_open: true
-    tty: true
-    depends_on:
-      - db
-
-  db:
-    hostname: db
-    image: ankane/pgvector
-    ports:
-      - 6543:5432
-    restart: always
-    environment:
-      - POSTGRES_DB=learn-rag-database
-      - POSTGRES_USER=testuser
-      - POSTGRES_PASSWORD=testpwd
-      - POSTGRES_HOST_AUTH_METHOD=trust
-    volumes:
-      - ./backend/Pixion.LearnRag.Infrastructure/init.sql:/docker-entrypoint-initdb.d/init.sql
