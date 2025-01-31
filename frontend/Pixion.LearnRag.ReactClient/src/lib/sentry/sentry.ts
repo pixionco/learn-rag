@@ -7,7 +7,7 @@ if (sentryDsn) {
     integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
     // tracing
     tracesSampleRate: 1.0,
-    tracePropagationTargets: ["localhost", /^https:\/\/pixion-learn-rag\.azurewebsites\.net\/api/],
+    tracePropagationTargets: ["localhost", /^https:\/\/learn-rag\.pixion\.co\/api/],
     // session replay
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,

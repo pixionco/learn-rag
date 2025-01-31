@@ -3,7 +3,7 @@
 Pixion Learn RAG is a project developed using [Visual Studio's React and ASP.NET Core template](https://learn.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-react?view=vs-2022).
 It demonstrates the data flow and logic of the Retrieval-Augmented Generation (RAG) strategies mentioned in our [blog post series](https://pixion.co/blog/introducing-pixion-blog-series-on-rag-llms).
 
-The application can be publicly acessed on: https://pixion-learn-rag.azurewebsites.net/
+The application can be publicly acessed on: https://learn-rag.pixion.co/
 
 The project is divided into two main parts: the backend and the frontend:
 
