@@ -1,7 +1,8 @@
 # Pixion Learn RAG
 
 Pixion Learn RAG is a project developed using [Visual Studio's React and ASP.NET Core template](https://learn.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-react?view=vs-2022).
-It demonstrates the data flow and logic of the Retrieval-Augmented Generation (RAG) strategies mentioned in our [blog post series](https://pixion.co/blog/introducing-pixion-blog-series-on-rag-llms).
+It demonstrates the data flow and logic of the Retrieval-Augmented Generation (RAG) strategies mentioned in our [pixion.co blog post series](https://pixion.co/blog/introducing-pixion-blog-series-on-rag-llms)
+and is also part of [Pixion.co Enterprise RAG AI Solutions Case Study](https://pixion.co/work/enterprise-rag-ai-solutions#:~:text=Introducing%20the%20Learn%20RAG%20educational%20application)
 
 The application can be publicly acessed on: https://learn-rag.pixion.co/
 
@@ -68,7 +69,7 @@ More details can be found in the `API` project's README file.
 Below is an overview of the implemented strategies with brief descriptions.
 Additional tables for embedding options and retrieval options can be found in the [Strategy Table](###strategy-table) section, which may help with project navigation.
 
-### Basic [#](https://pixion.co/blog/basic-index-retrieval)
+### Basic [https://pixion.co/blog/basic-index-retrieval](https://pixion.co/blog/basic-index-retrieval)
 
 The basic strategy splits a document into chunks, which are sent to an embedding model to generate embeddings.
 The chunks, metadata and embeddings are then saved in the database, supporting vector search.
@@ -76,20 +77,20 @@ The chunks, metadata and embeddings are then saved in the database, supporting v
 When user poses a question, a vector similarity search is performed and the most relevant chunks are combined into
 context which is then provided to the LLM to generate a final answer.
 
-### Sentence Window [#](https://pixion.co/blog/rag-strategies-context-enrichment)
+### Sentence Window [https://pixion.co/blog/rag-strategies-context-enrichment](https://pixion.co/blog/rag-strategies-context-enrichment)
 
 In contrast to the basic strategy, the sentence window strategy considers neighboring chunks around the relevant chunk after the search.
 The number of neighboring chunks is determined by the `range` property.
 For example, if chunk index `5` is relevant and `range` is set to `2`, chunks with indexes `3`, `4` (upper neighbors) and `6`, `7` (lower neighbors) will be used to create context.
 
-### Auto Merging [#](https://pixion.co/blog/rag-strategies-context-enrichment)
+### Auto Merging [https://pixion.co/blog/rag-strategies-context-enrichment](https://pixion.co/blog/rag-strategies-context-enrichment)
 
 This strategy performs chunking twice: first with a higher chunk size (creating `parentChunks`) and then with a smaller chunk size (creating `childChunks`).
 In theory this strategy supports any number of levels, but for sake of simplicity we kept it at 2.
 Both chunk types are embedded. When a search request is made, child chunks are searched first.
 Afterward, if the number of child chunks passes a threshold they are merged together into the parent chunk they were derived from.
 
-### Hierarchical [#](https://pixion.co/blog/rag-strategies-hierarchical-index-retrieval)
+### Hierarchical [https://pixion.co/blog/rag-strategies-hierarchical-index-retrieval](https://pixion.co/blog/rag-strategies-hierarchical-index-retrieval)
 
 Similar to the auto merging strategy, chunking is performed twice in this approach (but also supports more levels).
 However, in the hierarchical strategy, the size difference between the parent and child chunks can be significant, so the parent chunks are summarized.
@@ -99,7 +100,7 @@ For the purpose of this project, the scale was kept small.
 In the first stage of the search (which returns `limit` chunks), a summary of the parent chunks is used for the vector search.
 After that, the `child_limit` chunks are searched within each of the selected parent chunks, allowing for a more granular search in the second stage.
 
-### Hypothetical Question [#](https://pixion.co/blog/rag-strategies-hypothetical-questions-hyde)
+### Hypothetical Question [https://pixion.co/blog/rag-strategies-hypothetical-questions-hyde](https://pixion.co/blog/rag-strategies-hypothetical-questions-hyde)
 
 The Hypothetical Question strategy generates one or more questions from each chunk of a document using an LLM,
 which are then embedded and stored in a vector database.
