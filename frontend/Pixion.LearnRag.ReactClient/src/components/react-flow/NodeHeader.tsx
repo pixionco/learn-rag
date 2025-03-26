@@ -21,7 +21,7 @@ const NodeHeader = memo<NodeHeaderProps>(function NodeBase({
         {blogLinkHref && (
           <TooltipTrigger delay={200} closeDelay={100}>
             <BlogLinkIcon href={blogLinkHref} />
-            <DefaultTooltip>View more at our blog</DefaultTooltip>
+            <DefaultTooltip>{blogLinkHref}</DefaultTooltip>
           </TooltipTrigger>
         )}
       </div>

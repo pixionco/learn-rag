@@ -45,7 +45,7 @@ const SideMenu = memo<SideMenuProps>(function SideMenu({ strategy, onStrategyCha
         <Dialog className="flex h-full">
           <section className="flex flex-col gap-4 overflow-y-auto border-r border-neutral-300 bg-neutral-100">
             <Header className="flex items-center justify-between gap-8 px-4 py-2 tracking-wider ">
-              <Heading slot="title" className="text-2xl font-semibold text-neutral-800">
+              <Heading slot="title" className="text-2xl font-semibold text-neutral-800 select-none">
                 Menu
               </Heading>
               <div className="flex items-center gap-2">
@@ -57,7 +57,7 @@ const SideMenu = memo<SideMenuProps>(function SideMenu({ strategy, onStrategyCha
               <Text
                 id="strategy-description"
                 slot="description"
-                className="flex flex-col gap-4 text-neutral-700"
+                className="flex flex-col gap-4 text-neutral-700 select-none"
               >
                 <p>{selectedStrategyTab.description}</p>
                 <BlogLinkButton href={selectedStrategyTab.href} text="Read more" />

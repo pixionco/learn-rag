@@ -15,13 +15,13 @@ const StrategyTabs = memo<StrategyTabsProps>(function SideMenu({ strategy, onStr
       selectedKey={strategy}
       onSelectionChange={onStrategyChange}
     >
-      <Label className="text-lg font-medium text-neutral-800">RAG Strategy:</Label>
+      <Label className="text-lg font-medium text-neutral-800 select-none">RAG Strategy:</Label>
       <ListBox className="flex w-full flex-col gap-2">
         {strategyTabs.map(tab => (
           <ListBoxItem
             key={tab.id}
             id={tab.id}
-            className="flex flex-col gap-2 rounded-full bg-neutral-500 px-4 py-1 font-semibold text-white  transition-colors hover:bg-neutral-400 selected:bg-brand-500"
+            className="flex flex-col gap-2 rounded-full bg-neutral-500 px-4 py-1 font-semibold text-white  transition-colors hover:bg-neutral-400 selected:bg-brand-500 cursor-pointer select-none"
           >
             {tab.title}
           </ListBoxItem>
