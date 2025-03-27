@@ -14,7 +14,7 @@ function BlogLinkButton({ href, text, ...props }: BlogLinkButtonProps) {
       href={href}
       target="_blank"
       {...props}
-      className="nodrag flex w-fit items-center gap-2 font-semibold text-brand-600"
+      className="nodrag flex w-fit items-center gap-2 font-semibold text-brand-600 -mt-4"
       onPress={() => GoogleAnalytics.blogLinkEvent(href)}
     >
       {text}
