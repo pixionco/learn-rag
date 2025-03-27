@@ -41,6 +41,7 @@ const VectorDatabaseSearchNode = memo<NodeProps<VectorDatabaseSearchNode>>(
         <NodeHeader
           title="Vector Database"
           blogLinkHref="https://pixion.co/blog/choosing-your-index-with-pg-vector-flat-vs-hnsw-vs-ivfflat"
+          blogTitle="Choosing your Index with PGVector: Flat vs HNSW vs IVFFlat"
         >
           <VectorDatabaseSearchDialog
             searchResults={searchQuery.data}

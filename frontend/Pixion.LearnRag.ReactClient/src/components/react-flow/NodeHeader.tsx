@@ -7,11 +7,13 @@ import DefaultTooltip from "../DefaultTooltip";
 type NodeHeaderProps = PropsWithChildren<{
   title: string;
   blogLinkHref?: PixionBlogString;
+  blogTitle?: string;
 }>;
 
 const NodeHeader = memo<NodeHeaderProps>(function NodeBase({
   title,
   blogLinkHref,
+  blogTitle,
   children,
 }: NodeHeaderProps) {
   return (
@@ -21,7 +23,7 @@ const NodeHeader = memo<NodeHeaderProps>(function NodeBase({
         {blogLinkHref && (
           <TooltipTrigger delay={200} closeDelay={100}>
             <BlogLinkIcon href={blogLinkHref} />
-            <DefaultTooltip>{blogLinkHref}</DefaultTooltip>
+            <DefaultTooltip>{blogTitle}</DefaultTooltip>
           </TooltipTrigger>
         )}
       </div>

@@ -38,6 +38,7 @@ const LLMAnswerNode = memo<NodeProps<LLMAnswerNode>>(function LLMAnswerNode() {
       <NodeHeader
         title="LLM"
         blogLinkHref="https://pixion.co/blog/rag-in-practice-answer-generation"
+        blogTitle="RAG in practice - Answer Generation"
       />
       <section className="flex min-w-[500px] max-w-[500px] flex-col p-4">
         {answerQuery.isLoading && <p>Generating a response...</p>}

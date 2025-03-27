@@ -34,6 +34,7 @@ const ChunkEmbeddingNode = memo<NodeProps<ChunkEmbeddingNode>>(
         <NodeHeader
           title="Embedding Model"
           blogLinkHref="https://pixion.co/blog/rag-in-practice-embedding"
+          blogTitle="RAG in practice - Embedding"
         />
         <section className="min-w-[600px] max-w-[600px] p-4">
           <div className="flex flex-col gap-6">

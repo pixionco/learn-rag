@@ -38,6 +38,7 @@ const PromptTemplateNode = memo<NodeProps<PromptTemplateNode>>(function PromptTe
       <NodeHeader
         title="Templating Engine"
         blogLinkHref="https://pixion.co/blog/llm-prompt-optimization"
+        blogTitle="LLM Prompt Optimization"
       >
         <PrompteTemplatePreviewDialog
           template={templateQuery.data}

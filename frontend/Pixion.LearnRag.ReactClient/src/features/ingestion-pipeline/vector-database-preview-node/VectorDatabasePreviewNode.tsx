@@ -38,6 +38,7 @@ const VectorDatabasePreviewNode = memo<NodeProps<VectorDatabasePreviewNode>>(
         <NodeHeader
           title="Vector Database"
           blogLinkHref="https://pixion.co/blog/choosing-a-vector-database-when-working-with-rag"
+          blogTitle="Choosing a Vector Database when Working with RAG"
         >
           <VectorDatabasePreviewDialog
             embeddingRecords={embeddingRecordsQuery.data}
