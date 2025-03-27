@@ -60,7 +60,8 @@ const SideMenu = memo<SideMenuProps>(function SideMenu({ strategy, onStrategyCha
                 className="flex flex-col gap-4 text-neutral-700 select-none"
               >
                 <p>{selectedStrategyTab.description}</p>
-                <BlogLinkButton href={selectedStrategyTab.href} text="Read more" />
+                <p>Read more:</p>
+                <BlogLinkButton href={selectedStrategyTab.href} text={selectedStrategyTab.title} />
               </Text>
             </div>
             <footer className="flex flex-col gap-2 p-4">

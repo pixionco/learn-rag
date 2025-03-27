@@ -14,11 +14,11 @@ function BlogLinkButton({ href, text, ...props }: BlogLinkButtonProps) {
       href={href}
       target="_blank"
       {...props}
-      className="nodrag flex w-fit items-center gap-2 rounded-full bg-brand-500 px-4 py-1 font-semibold text-white transition-colors hover:bg-brand-600"
+      className="nodrag flex w-fit items-center gap-2 font-semibold text-brand-600"
       onPress={() => GoogleAnalytics.blogLinkEvent(href)}
     >
       {text}
-      <External className="inline size-5 fill-white" />
+      <External className="inline size-5 fill-brand-600" />
     </Link>
   );
 }
